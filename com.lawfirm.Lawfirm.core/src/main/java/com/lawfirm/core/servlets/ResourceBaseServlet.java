@@ -20,11 +20,18 @@ import com.day.cq.commons.jcr.JcrConstants;
 		"sling.servlet.selectors=" + "test" })
 @ServiceDescription("This servlet use to get data using JCR Queries")
 public class ResourceBaseServlet extends SlingSafeMethodsServlet{
+	
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		Resource resource = request.getResource();
 		response.setContentType("text/plain");
 		response.getWriter().print("Title = "+resource.getValueMap().get(JcrConstants.JCR_TITLE));
+		response.getWriter().print(ResourceBaseServlet.getMeaning("Hello1"));
+		response.getWriter().print("Hello2");
+	}
+	
+	public static String getMeaning(String word){
+		return word;
 	}
 }
